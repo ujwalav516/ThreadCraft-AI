@@ -55,10 +55,8 @@ const router = useRouter();
     );
 
     setTimeout(() => {
-
-        router.push("/dashboard");
-
-    }, 900);
+    window.location.href = "/dashboard";
+}, 900);
 
 };
 

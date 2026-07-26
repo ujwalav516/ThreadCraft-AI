@@ -179,7 +179,7 @@ else {
       article === articleFromTrend
     ) {
 
-      generateThread(article);
+      //generateThread(article);
 
     }
 

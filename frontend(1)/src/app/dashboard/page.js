@@ -55,21 +55,22 @@ export default function DashboardPage() {
     );
   }
 
+  
   return (
-    <div className="page">
-      <Navbar />
+  <div className="page">
+    <Navbar />
 
-      <div className="hero">
-        <h1>🚀 ThreadCraft AI</h1>
+    <div className="hero">
+      <h1>🚀 ThreadCraft AI</h1>
 
-        <p>AI Twitter/X Viral Engine & Ghostwriter</p>
+      <p>AI Twitter/X Viral Engine & Ghostwriter</p>
 
-        <span>
-          Transform articles, PDFs and trending news into viral Twitter/X threads.
-        </span>
-      </div>
-
-      <Dashboard />
+      <span>
+        Transform articles, PDFs and trending news into viral Twitter/X threads.
+      </span>
     </div>
-  );
+
+    <Dashboard />
+  </div>
+);
 }
