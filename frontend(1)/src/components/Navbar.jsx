@@ -11,11 +11,8 @@ export default function Navbar() {
   const pathname = usePathname();
 
 const handleLogout = () => {
-
     localStorage.removeItem("threadcraftUser");
-
-    router.push("/login");
-
+    router.replace("/");
 };
   return (
     <nav className="navbar">
@@ -27,8 +24,8 @@ const handleLogout = () => {
       <ul className="nav-links">
 
   <Link
-  href="/"
-  className={pathname === "/" ? "nav-active" : ""}
+  href="/dashboard"
+  className={pathname === "/dashboard" ? "nav-active" : ""}
 >
   🏠 Dashboard
 </Link>

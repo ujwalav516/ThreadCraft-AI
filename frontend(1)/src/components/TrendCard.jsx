@@ -11,8 +11,8 @@ export default function TrendCard({ trend }) {
     const article = `${trend.title}\n\n${trend.summary}`;
 
     router.push(
-      "/?article=" + encodeURIComponent(article)
-    );
+  "/dashboard?article=" + encodeURIComponent(article)
+);
 
   }
 

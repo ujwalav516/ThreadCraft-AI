@@ -56,7 +56,7 @@ const router = useRouter();
 
     setTimeout(() => {
 
-        router.push("/");
+        router.push("/dashboard");
 
     }, 900);
 
