@@ -1,0 +1,234 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter,Arial,sans-serif;
+}
+
+body{
+
+    background:#F8F5FF;
+
+}
+
+.page{
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:35px;
+
+}
+
+.navbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:white;
+
+    padding:20px 30px;
+
+    border-radius:20px;
+
+    box-shadow:0 8px 25px rgba(167,139,250,.08);
+
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    font-size:28px;
+    font-weight:700;
+
+    white-space:nowrap;
+    flex-wrap:nowrap;      /* ADD */
+    flex-shrink:0;         /* ADD */
+}
+.logo span{
+    color:#B794F6;
+    white-space:nowrap;
+}
+
+.logo b{
+
+    color:#D8B4FE;
+
+}
+
+.nav-links{
+
+    display:flex;
+
+    list-style:none;
+
+    gap:18px;
+
+}
+
+.nav-links li{
+
+    cursor:pointer;
+
+    padding:12px 18px;
+
+    border-radius:12px;
+
+    transition:.3s;
+
+}
+
+.nav-links li:hover{
+
+    background:#F3F0FF;
+
+}
+
+.active{
+    background:#B794F6;
+    color:#fff;
+
+    border-radius:18px;   /* makes it pill-shaped */
+
+    padding:12px 24px;    /* slightly wider */
+
+    font-weight:600;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.hero{
+
+    text-align:center;
+
+    margin:50px 0;
+
+}
+
+.hero h1{
+
+    color:#7C5CFA;
+
+    font-size:46px;
+
+    margin-bottom:12px;
+
+}
+
+.hero p{
+
+    color:#777;
+
+    font-size:18px;
+
+}
+
+.schedule-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+
+    gap:25px;
+
+}
+
+.schedule-card{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    box-shadow:0 10px 25px rgba(167,139,250,.08);
+
+    border:1px solid #ECE4FF;
+
+}
+
+.schedule-card h2{
+
+    color:#7C5CFA;
+
+    margin-bottom:15px;
+
+}
+
+.schedule-card p{
+
+    color:#666;
+
+    line-height:1.7;
+
+    margin-bottom:18px;
+
+}
+
+.meta{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:15px;
+
+    color:#666;
+
+    font-size:14px;
+
+}
+
+.status{
+
+    margin-top:20px;
+
+    background:#E8FFF1;
+
+    color:#16A34A;
+
+    padding:10px;
+
+    border-radius:12px;
+
+    text-align:center;
+
+    font-weight:bold;
+
+}
+
+
+
+.nav-right{
+    display:flex;
+    align-items:center;
+}
+
+.profile{
+
+    width:48px;
+    height:48px;
+
+    border-radius:50%;
+
+    background:#b78dff;
+
+    color:white;
+
+    font-weight:700;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:22px;
+
+}

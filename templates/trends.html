@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Trend Explorer</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        🚀 <span>ThreadCraft</span> <b>AI</b>
+
+    </div>
+
+    <ul class="nav-links">
+
+        <li onclick="window.location='/'">
+            🏠 Dashboard
+        </li>
+
+        <li class="active">
+            🔥 Trend Explorer
+        </li>
+
+        <li onclick="window.location='/library'">
+            📂 Thread Library
+        </li>
+
+        <li onclick="window.location='/scheduler'">
+            📅 Scheduler
+        </li>
+
+        <li onclick="showAnalytics()">
+            📊 Analytics
+        </li>
+
+        <li onclick="window.location='/login'">
+            🚪 Logout
+        </li>
+
+    </ul>
+
+    <div class="nav-right">
+
+        <div class="profile">
+
+            U
+
+        </div>
+
+    </div>
+
+</nav>
+
+<!-- HERO -->
+
+<div class="hero">
+
+    <h1>🔥 Trend Explorer</h1>
+
+    <p>
+
+        Discover trending topics and instantly generate viral threads.
+
+    </p>
+
+</div>
+
+    <div class="trend-container">
+
+        <h2>🔥 Live Trending Topics</h2>
+
+        <div id="trendList">
+
+{% for item in news %}
+
+<div class="trend-card">
+
+    <h3>{{ item.title }}</h3>
+
+    <p>{{ item.summary }}</p>
+
+    <div class="trend-buttons">
+
+        <button onclick="window.location='/studio?title={{ item.title }}&summary={{ item.summary }}'">
+
+            ✨ Generate Thread
+
+        </button>
+
+        <a href="{{ item.link }}" target="_blank">
+
+            Read Article →
+
+        </a>
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+    </div>
+
+</div>
+
+<script src="/static/script.js"></script>
+
+</body>
+
+</html>

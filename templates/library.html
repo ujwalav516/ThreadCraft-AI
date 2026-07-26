@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Thread Library</title>
+
+<link rel="stylesheet" href="/static/library.css">
+
+</head>
+
+<body>
+
+<div class="page">
+
+<nav class="navbar">
+
+    <div class="logo">
+        🚀 <span>ThreadCraft</span> <b>AI</b>
+    </div>
+
+    <ul class="nav-links">
+
+        <li onclick="window.location='/'">
+            🏠 Dashboard
+        </li>
+
+        <li onclick="window.location='/trends'">
+            🔥 Trend Explorer
+        </li>
+
+        <li class="active">
+            📂 Thread Library
+        </li>
+
+        <li onclick="window.location='/scheduler'">
+            📅 Scheduler
+        </li>
+
+        <li onclick="window.location='/analytics'">
+            📊 Analytics
+        </li>
+
+        <li onclick="window.location='/login'">
+            🚪 Logout
+        </li>
+
+    </ul>
+
+    <div class="nav-right">
+        <div class="profile">
+            U
+        </div>
+    </div>
+
+</nav>
+
+
+
+
+<div class="hero">
+
+<h1>📂 Saved Threads</h1>
+
+<p>
+
+All your generated Twitter/X threads in one place.
+
+</p>
+
+</div>
+
+<div class="library-grid">
+
+{% if threads %}
+
+{% for thread in  threads %}
+
+<div class="thread-card">
+
+<h2>{{ thread.title }}</h2>
+
+<div class="date">
+
+{{ thread.created }}
+
+</div>
+
+<pre>
+
+{{ thread.thread }}
+
+</pre>
+
+<button
+class="read-btn"
+onclick="openThread(`{{ thread.thread | replace('`','\\`') }}`)">
+
+📖 Read Full Thread
+
+</button>
+
+</div>
+
+{% endfor %}
+
+{% else %}
+
+<h2>No saved threads yet.</h2>
+
+{% endif %}
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+<div id="threadPopup" class="popup">
+
+    <div class="popup-box">
+
+        <span class="close-btn"
+              onclick="closeThread()">
+
+            ✖
+
+        </span>
+
+        <h2>
+
+            📖 Full Thread
+
+        </h2>
+
+        <pre id="popupText"></pre>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+function openThread(thread){
+
+    document.getElementById("popupText").textContent = thread;
+
+    document.getElementById("threadPopup").style.display = "flex";
+
+}
+
+function closeThread(){
+
+    document.getElementById("threadPopup").style.display = "none";
+
+}
+
+// Close when clicking outside popup
+
+window.onclick = function(event){
+
+    const popup = document.getElementById("threadPopup");
+
+    if(event.target === popup){
+
+        popup.style.display = "none";
+
+    }
+
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

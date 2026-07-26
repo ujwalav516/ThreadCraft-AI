@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Trend Explorer | ThreadCraft</title>
+
+    <link rel="stylesheet"
+          href="/static/trend_explorer.css">
+
+</head>
+
+<body>
+
+<div class="page">
+
+<nav class="navbar">
+
+<div class="logo">
+
+🚀 <span>ThreadCraft</span> <b>AI</b>
+
+</div>
+
+<ul class="nav-links">
+
+<li onclick="window.location='/'">
+🏠 Dashboard
+</li>
+
+<li class="active">
+🔥 Trend Explorer
+</li>
+
+<li onclick="window.location='/scheduler'">
+📅 Scheduler
+</li>
+
+<li>
+📂 Library
+</li>
+
+<li>
+📊 Analytics
+</li>
+
+<li onclick="window.location='/login'">
+🚪 Logout
+</li>
+
+</ul>
+
+</nav>
+
+
+<div class="hero">
+
+<h1>🔥 Trend Explorer</h1>
+
+<p>
+Discover trending AI, Business and Tech topics instantly.
+</p>
+
+</div>
+
+
+<div class="search-box">
+<input
+    type="text"
+    id="searchInput"
+    placeholder="Search anything..."
+    onkeydown="if(event.key==='Enter') searchTrends()">
+
+<button onclick="searchTrends()">
+
+🔍 Search
+
+</button>
+
+</div>
+
+
+<div class="trend-grid">
+
+{% for item in news %}
+
+<div class="trend-card" data-title="{{ item.title|lower }}">
+
+    <div class="badge ai">
+        🔥 AI
+    </div>
+
+    <h2>{{ item.title }}</h2>
+
+    <p>{{ item.summary | safe }}</p>
+
+    <button
+onclick="window.location=
+'/studio?title={{ item.title | urlencode }}&summary={{ item.summary | urlencode }}'">
+
+🧵 Generate Thread
+
+</button>
+</div>
+
+{% endfor %}
+
+</div>
+
+<script src="/static/trend_explorer.js"></script>
+
+</body>
+
+</html>

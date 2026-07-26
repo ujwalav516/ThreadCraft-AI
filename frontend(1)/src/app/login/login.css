@@ -1,0 +1,1247 @@
+/* =====================================================
+                    THREADCRAFT LOGIN
+                  PART 1 (Replace Start)
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.login-page{
+    position:relative;
+    min-height:100vh;
+    overflow:hidden;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+        radial-gradient(circle at top left,#ece2ff 0%,transparent 38%),
+        radial-gradient(circle at bottom right,#e7dcff 0%,transparent 40%),
+        linear-gradient(135deg,#faf8ff,#f4eeff,#faf9ff);
+
+    background-size:220% 220%;
+    animation:gradientMove 18s linear infinite;
+}
+
+/* =======================================
+            BACKGROUND BLOBS
+======================================= */
+
+.login-background{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    z-index:0;
+}
+
+.blur-circle{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(95px);
+    opacity:.55;
+}
+
+.blur1{
+    width:420px;
+    height:420px;
+
+    background:#d9c6ff;
+
+    left:-140px;
+    top:-120px;
+
+    animation:blob1 15s ease-in-out infinite alternate;
+}
+
+.blur2{
+    width:340px;
+    height:340px;
+
+    background:#ede5ff;
+
+    right:-120px;
+    top:12%;
+
+    animation:blob2 18s ease-in-out infinite alternate;
+}
+
+.blur3{
+    width:470px;
+    height:470px;
+
+    background:#d7c3ff;
+
+    bottom:-180px;
+    left:42%;
+
+    animation:blob3 20s ease-in-out infinite alternate;
+}
+
+/* =======================================
+              MAIN CONTAINER
+======================================= */
+
+.login-container{
+
+    position:relative;
+
+    width:100%;
+    max-width:1350px;
+
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    z-index:2;
+}
+
+/* =======================================
+                SCENE
+======================================= */
+
+.scene{
+
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* =======================================
+              GLOW RING
+======================================= */
+
+
+
+
+   .glow-ring{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:980px;
+    height:980px;
+
+    border:3px solid rgba(161,122,255,.45);
+    border-radius:50%;
+
+    z-index:0;
+
+    box-shadow:
+        0 0 40px rgba(161,122,255,.25),
+        0 0 90px rgba(161,122,255,.20),
+        0 0 180px rgba(161,122,255,.16),
+        inset 0 0 30px rgba(255,255,255,.35);
+
+    animation:
+        ringPulse 5s ease-in-out infinite,
+        ringRotate 35s linear infinite;
+}
+
+
+
+
+
+
+
+.glow-ring::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-70px;
+
+    border-radius:50%;
+
+    background:radial-gradient(
+        circle,
+        rgba(167,139,250,.22) 0%,
+        rgba(167,139,250,.10) 45%,
+        transparent 72%
+    );
+
+    filter:blur(45px);
+
+    z-index:-1;
+}
+
+
+
+
+
+
+
+/* =======================================
+                  ROBOT
+======================================= */
+.robot{
+    position:absolute;
+
+    left:25%;
+    top:56%;
+
+    transform:translate(-50%,-50%);
+    z-index:2;
+
+    animation:robotFloat 5s ease-in-out infinite;
+}
+
+
+
+.robot img{
+
+          width:380px;
+    height:auto;
+    display:block;
+
+    filter:drop-shadow(0 35px 45px rgba(123,97,255,.28));
+}
+
+.robot::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:320px;
+    height:320px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(circle,
+        rgba(171,132,255,.45),
+        transparent 72%);
+
+    filter:blur(45px);
+
+    z-index:-1;
+}
+
+/* =======================================
+            LOGIN CARD
+======================================= */
+
+.login-card{
+
+    position:relative;
+
+    width:390px;
+
+    background:rgba(255,255,255,.88);
+
+    backdrop-filter:blur(28px);
+
+    border:1px solid rgba(255,255,255,.75);
+
+    border-radius:30px;
+
+    padding:38px 38px 46px;
+
+    box-shadow:
+        0 35px 90px rgba(123,97,255,.18);
+
+    z-index:20;
+
+    animation:cardAppear .9s ease;
+}
+
+/* =======================================
+               LOGO
+======================================= */
+
+.logo-row{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    gap:10px;
+
+    font-size:18px;
+    font-weight:700;
+
+    margin-bottom:22px;
+
+    background:linear-gradient(
+        90deg,
+        #7C3AED 0%,
+        #8B5CF6 45%,
+        #A78BFA 100%
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+}
+
+.logo-row svg{
+
+    width:20px;
+    height:20px;
+    color:#A78BFA;
+}
+
+/* =======================================
+               HEADING
+======================================= */
+
+.login-card h2{
+
+    font-size:34px;
+
+    text-align:center;
+
+    color:#323232;
+
+    margin-bottom:10px;
+
+    font-weight:800;
+}
+
+.login-card>p{
+
+    text-align:center;
+
+    color:#777;
+
+    font-size:15px;
+
+    margin-bottom:30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =======================================
+              LABELS
+======================================= */
+
+.login-card label{
+
+    display:block;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:#5d5d5d;
+
+    margin-bottom:8px;
+}
+
+/* =======================================
+              INPUTS
+======================================= */
+
+.input-box{
+
+  
+
+display:flex;
+    
+align-items:center;
+    gap:14px;
+
+    width:100%;
+    height:54px;
+
+    padding:0 18px;
+
+    margin-bottom:18px;
+
+    background:#fff;
+
+    border:1.5px solid #e5ddff;
+    border-radius:18px;
+
+    transition:.3s;
+
+    overflow:hidden;
+}
+
+.input-box:hover{
+
+    border-color:#b48dff;
+}
+
+.input-box:focus-within{
+
+    border-color:#8B5CF6;
+
+    box-shadow:
+        0 0 0 4px rgba(139,92,246,.12);
+}
+
+.input-box svg{
+
+    flex-shrink:0;
+    color:#666;
+}
+
+.input-box input{
+
+    flex:1;
+
+    border:none;
+    outline:none;
+    background:transparent;
+
+    width:100%;
+    height:100%;
+
+    padding:0;
+
+    font-family:inherit;
+
+    font-size:18px;
+    font-weight:500;
+
+    color:#333;
+}
+
+.input-box input::placeholder{
+
+    color:#707070;
+    opacity:1;
+
+    font-size:18px;
+    font-weight:400;
+}
+/* =======================================
+            REMEMBER ROW
+======================================= */
+
+.login-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin:18px 0 26px;
+}
+
+.login-row label{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin:0;
+
+    font-size:14px;
+
+    font-weight:500;
+}
+
+.login-row a{
+
+    color:#7B61FF;
+
+    text-decoration:none;
+
+    font-size:14px;
+}
+
+/* =======================================
+              BUTTONS
+======================================= */
+
+.signin-btn{
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    cursor:pointer;
+
+    border-radius:18px;
+
+    padding:17px;
+
+    color:#fff;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7C3AED 0%,
+            #8B5CF6 55%,
+            #A78BFA 100%
+        );
+
+    transition:.35s;
+}
+
+.signin-btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 20px 35px rgba(123,97,255,.25);
+}
+
+/* =======================================
+              DIVIDER
+======================================= */
+
+.divider{
+
+    margin:28px 0;
+
+    position:relative;
+
+    text-align:center;
+
+    color:#9c9c9c;
+}
+
+.divider::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:50%;
+
+    width:36%;
+
+    height:1px;
+
+    background:#e6ddff;
+}
+
+.divider::after{
+
+    content:"";
+
+    position:absolute;
+
+    right:0;
+
+    top:50%;
+
+    width:36%;
+
+    height:1px;
+
+    background:#e6ddff;
+}
+
+/* =======================================
+            GOOGLE BUTTON
+======================================= */
+
+.google-btn{
+
+    width:100%;
+
+    height:54px;
+
+    border-radius:18px;
+
+    border:1px solid #ebe2ff;
+
+    background:#fff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:12px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:#444;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.google-btn:hover{
+
+    background:#faf8ff;
+
+    border-color:#d7c3ff;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 25px rgba(123,97,255,.10);
+}
+
+.google-icon{
+
+    width:20px;
+
+    height:20px;
+}
+
+
+
+/* =======================================
+              FOOTER
+======================================= */
+
+.bottom-text{
+
+    margin-top:30px;
+
+    text-align:center;
+
+    color:#777;
+}
+
+.bottom-text a{
+
+    color:#7B61FF;
+
+    text-decoration:none;
+
+    font-weight:600;
+}
+
+/* =======================================
+          FLOATING CARDS
+======================================= */
+
+.float-card{
+
+    position:absolute;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:18px 20px;
+
+    background:rgba(255,255,255,.82);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.8);
+
+    border-radius:24px;
+
+    box-shadow:
+        0 22px 45px rgba(123,97,255,.16);
+
+    z-index:8;
+}
+
+.float-card .icon{
+
+    width:54px;
+
+    height:54px;
+
+    border-radius:18px;
+
+    background:#F3EDFF;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:24px;
+}
+
+.float-card h4{
+
+    font-size:18px;
+
+    color:#444;
+}
+
+.float-card p{
+
+    margin-top:4px;
+
+    color:#888;
+
+    font-size:14px;
+}
+
+/* =======================================
+        CARD POSITIONS
+======================================= */
+
+.twitter-card{
+
+    
+    left:120px;
+    top:355px;
+
+    width:180px;
+
+    animation:
+        floatCard 6s ease-in-out infinite,
+        cardAppear .8s ease;
+}
+
+.analytics-card{
+
+    right:110px;
+    top:470px;
+
+    width:190px;
+
+    animation:
+        floatCard 6.5s ease-in-out infinite,
+        cardAppear 1s ease;
+}
+
+.hash-card{
+
+    right:220px;
+
+    top:185px;
+
+    width:88px;
+
+    height:88px;
+
+    justify-content:center;
+
+    padding:0;
+
+    animation:
+        floatCard 5s ease-in-out infinite,
+        cardAppear 1.2s ease;
+}
+
+.hash-card .icon{
+
+    width:62px;
+
+    height:62px;
+
+    background:#F1EAFF;
+
+    color:#7B61FF;
+
+    font-size:34px;
+}
+
+/* =======================================
+            ANIMATIONS
+======================================= */
+
+@keyframes cardAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px) scale(.94);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0) scale(1);
+    }
+}
+
+@keyframes floatCard{
+    0%,100%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+
+@keyframes robotFloat{
+
+    0%{
+
+        transform:
+            translate(-50%,-50%)
+            translateY(0)
+            rotate(-2deg);
+    }
+
+    50%{
+
+        transform:
+            translate(-50%,-50%)
+            translateY(-12px)
+            rotate(2deg);
+    }
+
+    100%{
+
+        transform:
+            translate(-50%,-50%)
+            translateY(0)
+            rotate(-2deg);
+    }
+}
+@keyframes ringPulse{
+
+    0%{
+
+        transform:translate(-50%,-50%) scale(1);
+
+        opacity:.65;
+
+        box-shadow:
+            0 0 30px rgba(161,122,255,.20),
+            0 0 80px rgba(161,122,255,.18),
+            0 0 150px rgba(161,122,255,.14);
+    }
+
+    50%{
+
+        transform:translate(-50%,-50%) scale(1.03);
+
+        opacity:1;
+
+        box-shadow:
+            0 0 60px rgba(161,122,255,.40),
+            0 0 140px rgba(161,122,255,.30),
+            0 0 260px rgba(161,122,255,.22);
+    }
+
+    100%{
+
+        transform:translate(-50%,-50%) scale(1);
+
+        opacity:.65;
+
+        box-shadow:
+            0 0 30px rgba(161,122,255,.20),
+            0 0 80px rgba(161,122,255,.18),
+            0 0 150px rgba(161,122,255,.14);
+    }
+}
+
+@keyframes gradientMove{
+
+    0%{
+
+        background-position:0% 50%;
+    }
+
+    50%{
+
+        background-position:100% 50%;
+    }
+
+    100%{
+
+        background-position:0% 50%;
+    }
+}
+
+@keyframes blob1{
+
+    from{
+
+        transform:translate(0,0);
+    }
+
+    to{
+
+        transform:translate(40px,-20px);
+    }
+}
+
+@keyframes blob2{
+
+    from{
+
+        transform:translate(0,0);
+    }
+
+    to{
+
+        transform:translate(-35px,35px);
+    }
+}
+
+@keyframes blob3{
+
+    from{
+
+        transform:translate(0,0);
+    }
+
+    to{
+
+        transform:translate(25px,-35px);
+    }
+}
+
+/* =======================================
+            RESPONSIVE
+======================================= */
+
+@media(max-width:1100px){
+
+    .robot,
+    .twitter-card,
+    .analytics-card,
+    .hash-card,
+    .glow-ring{
+
+        display:none;
+    }
+
+    .login-card{
+
+        width:390px;
+    }
+}
+
+@media(max-width:500px){
+
+    .login-card{
+
+        width:92%;
+
+        padding:30px 24px;
+    }
+
+    .login-card h2{
+
+        font-size:30px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+.fade-out{
+
+    animation:fadeOut .6s forwards;
+
+}
+
+@keyframes fadeOut{
+
+    from{
+
+        opacity:1;
+        transform:scale(1);
+        filter:blur(0);
+
+    }
+
+    to{
+
+        opacity:0;
+        transform:scale(1.03);
+        filter:blur(12px);
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.eye-icon{
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    color:#777;
+
+    transition:.3s;
+}
+
+.eye-icon:hover{
+
+    color:#7C3AED;
+
+}
+
+
+
+
+
+
+
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus{
+
+    -webkit-box-shadow:0 0 0 1000px #ffffff inset !important;
+
+    -webkit-text-fill-color:#333 !important;
+
+    caret-color:#7C3AED;
+
+}
+
+
+
+
+
+
+
+
+
+.loading-logo{
+
+    font-size:34px;
+    font-weight:800;
+
+    background:linear-gradient(
+        90deg,
+        #7C3AED,
+        #8B5CF6,
+        #B794F4
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    margin-bottom:16px;
+
+}
+
+.loading-title{
+
+    font-size:30px;
+    font-weight:700;
+
+    color:#2d2d2d;
+
+    margin-bottom:12px;
+
+}
+
+.loading-subtitle{
+
+    width:420px;
+
+    text-align:center;
+
+    color:#777;
+
+    line-height:1.7;
+
+    margin-bottom:38px;
+
+}
+
+.loader-circle{
+
+    position:relative;
+
+    width:92px;
+    height:92px;
+
+    border-radius:50%;
+
+    border:5px solid rgba(139,92,246,.12);
+
+    border-top:5px solid #7C3AED;
+
+    animation:spin 1s linear infinite;
+
+    margin-bottom:35px;
+
+}
+
+.loader-inner{
+
+    position:absolute;
+
+    inset:18px;
+
+    border-radius:50%;
+
+    background:radial-gradient(
+        circle,
+        rgba(124,58,237,.18),
+        transparent
+    );
+
+    animation:pulse 1.8s ease infinite;
+
+}
+
+.loading-progress{
+
+    width:320px;
+    height:8px;
+
+    background:#ede9fe;
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+    margin-bottom:20px;
+
+}
+
+.loading-progress-bar{
+
+    width:40%;
+
+    height:100%;
+
+    border-radius:50px;
+
+    background:linear-gradient(
+        90deg,
+        #7C3AED,
+        #A78BFA
+    );
+
+    animation:progressMove 2s ease infinite;
+
+}
+
+.loading-status{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:#666;
+
+    font-size:15px;
+
+}
+
+.status-dot{
+
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+
+    background:#7C3AED;
+
+    animation:blink 1s infinite;
+
+}
+
+
+
+
+
+
+
+@keyframes progressMove{
+
+    0%{
+        width:15%;
+    }
+
+    50%{
+        width:80%;
+    }
+
+    100%{
+        width:15%;
+    }
+
+}
+
+@keyframes pulse{
+
+    0%,100%{
+        transform:scale(.8);
+        opacity:.5;
+    }
+
+    50%{
+        transform:scale(1.2);
+        opacity:1;
+    }
+
+}
+
+@keyframes blink{
+
+    0%,100%{
+        opacity:.3;
+    }
+
+    50%{
+        opacity:1;
+    }
+
+}

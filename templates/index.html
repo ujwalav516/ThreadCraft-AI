@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ThreadCraft AI</title>
+
+    <link rel="stylesheet"
+          href="/static/style.css">
+
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+    🚀 <span>ThreadCraft</span> <b>AI</b>
+</div>
+
+        <ul class="nav-links">
+                                                                                             
+            <li class="active"
+                onclick="window.location='/'">
+                🏠 Dashboard
+            </li>
+
+            <li
+                onclick="window.location='/trends'">
+                🔥 Trend Explorer
+            </li>
+
+            <li
+    onclick="window.location='/library'">
+    📂 Thread Library
+</li>
+
+<li onclick="window.location='/scheduler'">
+📅 Scheduler
+</li>
+
+           <li onclick="window.location='/analytics'">
+    📊 Analytics
+</li>
+
+            <li
+                onclick="window.location='/login'">
+                🚪 Logout
+            </li>
+
+        </ul>
+
+        <div class="nav-right">
+
+            <div class="profile">
+                U
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- ================= HERO ================= -->
+
+    <div class="hero">
+
+        <h1>🚀 ThreadCraft AI</h1>
+
+        <p>
+            AI Twitter/X Viral Engine & Ghostwriter
+        </p>
+
+        <span>
+            Transform articles, PDFs and trending news into viral Twitter/X threads.
+        </span>
+
+    </div>
+
+    <!-- ================= DASHBOARD ================= -->
+
+    <div class="dashboard">
+
+        <!-- LEFT PANEL -->
+
+        <div class="left-panel">
+
+            <h2>📝 Create Your Thread</h2>
+
+            <p class="section-title">
+                Upload PDF (Optional)
+            </p>
+
+            <div class="upload-box"
+                 id="dropArea">
+
+                <div class="upload-icon">
+                    📄
+                </div>
+
+                <h3 id="fileName">
+                    Drop your PDF here
+                </h3>
+
+                <p id="fileStatus">
+                    or click to browse
+                </p>
+
+                <input
+                    type="file"
+                    id="pdfFile"
+                    accept=".pdf"
+                    hidden>
+
+            </div>
+
+
+
+        <p class="section-title">
+🖼 Upload Image (Optional)
+</p>
+
+<input
+    type="file"
+    id="imageFile"
+    accept="image/*">
+
+<div id="imagePreview"></div>
+
+            <p class="section-title">
+                Trending Topic (Optional)
+            </p>
+
+            <input
+                type="text"
+                id="trend"
+                value="{{ title }}"
+                placeholder="e.g. AI in Healthcare, OpenAI, NVIDIA">
+
+            <p class="section-title">
+                🎨 Writing Tone
+            </p>
+
+            <select
+                id="tone"
+                class="dropdown">
+
+                <option value="Professional">
+                    Professional
+                </option>
+
+                <option value="Educational">
+                    Educational
+                </option>
+
+                <option value="Storytelling">
+                    Storytelling
+                </option>
+
+                <option value="Motivational">
+                    Motivational
+                </option>
+
+                <option value="Funny">
+                    Funny
+                </option>
+
+                <option value="Viral">
+                    Viral
+                </option>
+
+            </select>
+
+            <p class="section-title">
+                🧵 Thread Length
+            </p>
+
+            <select
+                id="length"
+                class="dropdown">
+
+                <option value="Short">
+                    Short (5 Tweets)
+                </option>
+
+                <option
+                    value="Medium"
+                    selected>
+                    Medium (10 Tweets)
+                </option>
+
+                <option value="Long">
+                    Long (20 Tweets)
+                </option>
+
+            </select>
+
+            <p class="section-title">
+                Paste Your Article / Content
+            </p>
+
+            <textarea
+                id="article"
+                placeholder="Paste your article or content here..."
+                oninput="updateCount()">{{ summary }}</textarea>
+
+            <p id="count">
+                0 characters
+            </p>
+
+            <button
+                onclick="generateThread()"
+                class="generate-btn">
+
+                ⚡ Generate Viral Thread
+
+            </button>
+
+            <p class="privacy">
+
+                🔒 Your data is private and secure. We don't store your content.
+
+            </p>
+
+        </div>
+
+        
+
+
+
+
+
+
+
+        <!-- RIGHT PANEL -->
+
+       <div class="right-panel">
+
+    <h2 class="thread-header">
+
+        Generated Thread
+
+        <span class="status">
+
+            🟢 Ready
+
+        </span>
+
+    </h2>
+
+    <div id="result">
+
+        <div class="placeholder">
+
+            🚀
+
+            <h3>
+                Your generated thread will appear here
+            </h3>
+
+            <p>
+
+                Fill the form and click
+
+                <strong>
+
+                    Generate Viral Thread
+
+                </strong>
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <h4>Tweets</h4>
+
+            <p id="tweetCount">
+
+                --
+
+            </p>
+
+        </div>
+
+        <div class="stat">
+
+            <h4>Words</h4>
+
+            <p id="wordCount">
+
+                --
+
+            </p>
+
+        </div>
+
+        <div class="stat">
+
+            <h4>Reading Time</h4>
+
+            <p id="readingTime">
+
+                -- min
+
+            </p>
+
+        </div>
+
+        <div class="stat">
+
+            <h4>Characters</h4>
+
+            <p id="charCount">
+
+                --
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="quality-card">
+
+    <h3>✨ Thread Quality</h3>
+
+    <div class="quality-score">
+
+        ⭐⭐⭐⭐⭐
+
+        <span id="qualityScore">0/100</span>
+
+    </div>
+
+    <div class="quality-row">
+
+        <span>Hook Strength</span>
+
+        <progress id="hookBar" value="0" max="100"></progress>
+
+    </div>
+
+    <div class="quality-row">
+
+        <span>Readability</span>
+
+        <progress id="readBar" value="0" max="100"></progress>
+
+    </div>
+
+    <div class="quality-row">
+
+        <span>Virality</span>
+
+        <progress id="viralBar" value="0" max="100"></progress>
+
+    </div>
+
+    <div class="quality-row">
+
+        <span>Engagement</span>
+
+        <progress id="engageBar" value="0" max="100"></progress>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="action-buttons">
+
+    <button onclick="copyThread()">
+        📋 Copy
+    </button>
+
+    <button onclick="downloadThread()">
+        ⬇ Download
+    </button>
+
+    <button onclick="saveThread()">
+        💾 Save
+    </button>
+
+    <button onclick="openSchedulePopup()">
+        📅 Schedule
+    </button>
+
+
+    <button onclick="postToX()">
+    🐦 Post to X
+</button>
+
+
+<button onclick="improveThread()">
+    ✨ Improve
+</button>
+
+    <button onclick="clearAll()">
+        🗑 Clear
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+</div>
+
+
+<div id="schedulePopup" class="popup">
+
+    <div class="popup-content">
+
+        <h2>📅 Schedule Thread</h2>
+
+        <label>Date</label>
+
+        <input
+            type="date"
+            id="scheduleDate">
+
+        <label>Time</label>
+
+        <input
+            type="time"
+            id="scheduleTime">
+
+        <div class="popup-buttons">
+
+            <button onclick="scheduleThread()">
+                Schedule
+            </button>
+
+            <button onclick="closeSchedulePopup()">
+                Cancel
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<div id="toast"></div>
+
+<footer class="footer">
+
+    <p>
+
+        🚀 ThreadCraft AI • Built with FastAPI, Gemini AI, HTML, CSS & JavaScript
+
+    </p>
+
+</footer>
+
+<script src="/static/script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Analytics Dashboard</title>
+
+    <link rel="stylesheet"
+          href="/static/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🚀 <span>ThreadCraft</span> <b>AI</b>
+        </div>
+
+        <ul class="nav-links">
+
+            <li onclick="window.location='/'">
+                🏠 Dashboard
+            </li>
+
+            <li onclick="window.location='/trends'">
+                🔥 Trend Explorer
+            </li>
+
+            <li onclick="window.location='/library'">
+                📂 Thread Library
+            </li>
+
+            <li onclick="window.location='/scheduler'">
+                📅 Scheduler
+            </li>
+
+           <li onclick="window.location='/analytics'">
+                📊 Analytics
+            </li>
+
+            <li onclick="window.location='/login'">
+                🚪 Logout
+            </li>
+
+        </ul>
+
+        <div class="nav-right">
+
+            <div class="profile">
+                U
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- ================= PAGE ================= -->
+
+    <div class="hero">
+
+        <h1>📊 Analytics Dashboard</h1>
+
+        <p>View insights about your AI generated threads.</p>
+
+    </div>
+
+    
+
+        <div class="right-panel analytics-panel">
+
+            <div class="stats">
+
+                <div class="stat">
+                    <h4>🚀 Threads Generated</h4>
+                    <p>{{ generated }}</p>
+                </div>
+
+                <div class="stat">
+                    <h4>💾 Saved Threads</h4>
+                    <p>{{ saved }}</p>
+                </div>
+
+                <div class="stat">
+                    <h4>📅 Scheduled Threads</h4>
+                    <p>{{ scheduled }}</p>
+                </div>
+
+                <div class="stat">
+                    <h4>📄 PDFs Uploaded</h4>
+                    <p>{{ pdfs }}</p>
+                </div>
+
+            </div>
+
+
+
+            <div class="analytics-grid">
+
+    <div class="chart-card">
+
+        <h2>📈 Threads Generated This Week</h2>
+
+        <canvas id="threadChart"></canvas>
+
+    </div>
+
+    <div class="chart-card">
+
+        <h2>🥧 Writing Tone Distribution</h2>
+
+        <canvas id="toneChart"></canvas>
+
+    </div>
+
+</div>
+
+<div class="activity-card">
+
+    <h2>🔥 Recent Activity</h2>
+
+    <ul>
+
+        <li>✅ Generated Operating System Thread</li>
+
+        <li>💾 Saved NVIDIA Thread</li>
+
+        <li>📅 Scheduled AI News Thread</li>
+
+        <li>⬇ Downloaded Cricket Thread</li>
+
+    </ul>
+
+</div>
+
+<div class="insight-card">
+
+    <h2>🤖 AI Insights</h2>
+
+    <p>✔ Professional tone is your most used style.</p>
+
+    <p>✔ Average thread length: 10 Tweets.</p>
+
+    <p>✔ Friday is your most active day.</p>
+
+    <p>✔ 3 Threads are waiting for publishing.</p>
+
+</div>
+
+       </div>
+
+    
+
+</div>
+
+<footer class="footer">
+
+    <p>
+        🚀 ThreadCraft AI • Built with FastAPI, Gemini AI, HTML, CSS & JavaScript
+    </p>
+
+</footer>
+
+</body>
+
+
+
+
+
+<script>
+
+const threadChart = document.getElementById("threadChart");
+
+new Chart(threadChart, {
+
+    type: "bar",
+
+    data: {
+
+        labels: [
+
+            "Mon",
+
+            "Tue",
+
+            "Wed",
+
+            "Thu",
+
+            "Fri",
+
+            "Sat",
+
+            "Sun"
+
+        ],
+
+        datasets: [{
+
+            label: "Threads",
+
+            data: [3,5,2,7,6,4,5],
+
+            backgroundColor: "#7B61FF",
+
+            borderRadius: 10
+
+        }]
+
+    },
+
+    options: {
+
+        responsive: true,
+
+        plugins: {
+
+            legend: {
+
+                display: false
+
+            }
+
+        }
+
+    }
+
+});
+
+const toneChart = document.getElementById("toneChart");
+
+new Chart(toneChart, {
+
+    type: "doughnut",
+
+    data: {
+labels: [
+
+    "Professional",
+
+    "Educational",
+
+    "Storytelling",
+
+    "Funny",
+
+    "Viral",
+
+    "Motivational"
+
+],
+
+datasets: [{
+
+    data: [
+
+        {{ professional }},
+
+        {{ educational }},
+
+        {{ storytelling }},
+
+        {{ funny }},
+
+        {{ viral }},
+
+        {{ motivational }}
+
+    ],
+
+    backgroundColor: [
+
+        "#7B61FF",
+
+        "#9F8CFF",
+
+        "#60A5FA",
+
+        "#34D399",
+
+        "#F59E0B",
+
+        "#EC4899"
+
+    ]
+
+}]
+
+    },
+
+    options: {
+
+        responsive: true
+
+    }
+
+});
+
+</script>
+
+
+
+
+
+
+
+
+</html>

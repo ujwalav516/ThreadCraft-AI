@@ -1,0 +1,34 @@
+# Python
+venv/
+venv312/
+__pycache__/
+*.pyc
+
+# Environment
+.env
+
+# Node
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Uploaded/generated data (optional)
+pdf_uploads/
+saved_threads/
+scheduled_posts/
+
+# Git
+.git/
+frontend/
