@@ -15,7 +15,7 @@ export default function TrendExplorer() {
 
     try {
 
-      let url = "http://127.0.0.1:8000/api/trends";
+      let url = "https://threadcraft-ai-1.onrender.com/api/trends";
 
       if (query.trim() !== "") {
         url += `?q=${encodeURIComponent(query)}`;

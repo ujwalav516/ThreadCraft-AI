@@ -36,7 +36,7 @@ export default function ScheduleModal({
     try {
 
       const response = await fetch(
-        "http://127.0.0.1:8000/schedule-thread",
+        "https://threadcraft-ai-1.onrender.com/schedule-thread",
         {
           method: "POST",
           body: formData

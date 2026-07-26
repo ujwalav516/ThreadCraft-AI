@@ -110,7 +110,7 @@ X_CLIENT_ID = os.getenv("X_CLIENT_ID")
 
 
 
-REDIRECT_URI = "http://127.0.0.1:8000/auth/callback"
+REDIRECT_URI = "https://threadcraft-ai-1.onrender.com/auth/callback"
 
 AUTH_URL = "https://twitter.com/i/oauth2/authorize"
 

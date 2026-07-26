@@ -92,7 +92,7 @@ export default function ActionButtons({
     try {
 
         const response = await fetch(
-            "http://127.0.0.1:8000/save-thread",
+            "https://threadcraft-ai-1.onrender.com/save-thread",
             {
                 method: "POST",
                 body: formData
@@ -142,7 +142,7 @@ const postToX = async () => {
     try {
 
         const response = await fetch(
-            "http://127.0.0.1:8000/post-x",
+            "https://threadcraft-ai-1.onrender.com/post-x",
             {
                 method: "POST",
                 credentials: "include",
@@ -180,7 +180,7 @@ const improveThread = async () => {
     try {
         setImproving(true);
         const response = await fetch(
-            "http://127.0.0.1:8000/improve-thread",
+            "https://threadcraft-ai-1.onrender.com/improve-thread",
             {
                 method: "POST",
                 headers: {

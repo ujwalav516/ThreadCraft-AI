@@ -106,7 +106,7 @@ export default function LeftPanel({
 
       const response = await fetch(
 
-        "http://127.0.0.1:8000/generate",
+        "https://threadcraft-ai-1.onrender.com/generate",
 
         {
 

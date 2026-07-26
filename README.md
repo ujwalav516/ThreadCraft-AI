@@ -205,7 +205,7 @@ http://localhost:3000
 The backend runs at:
 
 ```
-http://127.0.0.1:8000
+https://threadcraft-ai-1.onrender.com
 ```
 
 ---

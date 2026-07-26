@@ -11,7 +11,7 @@ export default function ThreadLibrary() {
 
     useEffect(() => {
 
-        fetch("http://127.0.0.1:8000/library")
+        fetch("https://threadcraft-ai-1.onrender.com/library")
             .then((res) => res.json())
             .then((data) => setThreads(data))
             .catch((err) => console.log(err));

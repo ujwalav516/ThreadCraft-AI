@@ -10,7 +10,7 @@ export default function AnalyticsPage() {
 
   useEffect(() => {
 
-    fetch("http://127.0.0.1:8000/analytics-data")
+    fetch("https://threadcraft-ai-1.onrender.com/analytics-data")
       .then((res) => res.json())
       .then((json) => setData(json));
 
